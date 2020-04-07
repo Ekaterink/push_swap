@@ -70,18 +70,56 @@ int		find_order(t_dlist *list, int num)
 	return (i);
 }
 
+char    *del_substr(char *str)
+{
+    int i;
+
+    i = 0;
+    while (str[i])
+    {
+        if (str[i - 1] && str[i - 1] == ' ' && str[i] != ' ')
+            return (&str[i]);
+        i++;
+    }
+    return (NULL);
+}
+
+char    *exist_str(char *str, int count)
+{
+    if (ft_strchr(str, (int)' ') == 0) // просто число
+        return (str);
+    else // там строка
+    {
+        if (count == 0) // первая цифра
+            return (str);
+        else // удаляем цифру и пробел, если есть
+        {
+            return (del_substr(str));
+        }
+    }
+}
+
 t_dlist	*get_stack_a(char **av)
 {
 	t_dlist	*new;
 	t_dlist	*begin;
 	int		i;
+	char    *new_str;
+	int     j;
 
-	i = 2;
-	begin = ft_dlstnew(ft_atoi(av[1]));
+	i = 1;
+//	begin = ft_dlstnew(ft_atoi(av[1]));
+    begin = NULL;
 	while (av[i])
 	{
-		new = ft_dlstnew(ft_atoi(av[i]));
-		ft_dlstadd_to_end(&begin, &new);
+        j = 0;
+        new_str = av[i];
+	    while ((new_str = exist_str(new_str, j)) != NULL)
+        {
+            new = ft_dlstnew(ft_atoi(new_str));
+            ft_dlstadd_to_end(&begin, &new);
+            j++;
+        }
 		i++;
 	}
 	return (begin);

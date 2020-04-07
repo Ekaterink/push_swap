@@ -19,4 +19,10 @@ void	ft_dlstadd_to_end(t_dlist **alst, t_dlist **new)
 		(*new)->next = NULL;
 		(*alst) = begin;
 	}
+	else
+    {
+//        (*new)->next = NULL;
+//        (*new)->previous = NULL;
+        (*alst) = (*new);
+    }
 }
