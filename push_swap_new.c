@@ -129,9 +129,9 @@ int		main(int ac, char **av)
 		stack_a = get_stack_a(av);
 		if (is_sorted(&stack_a) == 1)
 			return (0);
-		if (ac == 4)
+		else if (ac == 4)
 			sort_three(&stack_a);
-		if (ac == 6)
+		else if (ac == 6)
 			sort_five(&stack_a, &stack_b);
 		else
 			sort_hundred(&stack_a, &stack_b);
