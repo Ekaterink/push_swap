@@ -84,10 +84,27 @@ char    *del_substr(char *str)
     return (NULL);
 }
 
+int     is_substr(char *str, char c)
+{
+    int i;
+
+    i = 0;
+    while (str[i])
+    {
+        if (str[i] == c)
+            return (1);
+        i++;
+    }
+    return (0);
+}
+
+
 char    *exist_str(char *str, int count)
 {
-    if (ft_strchr(str, (int)' ') == 0) // просто число
+    if (is_substr(str, ' ') == 0 && count == 0) // просто число
         return (str);
+    else if (is_substr(str, ' ') == 0 && count == 1) // просто число
+        return (NULL);
     else // там строка
     {
         if (count == 0) // первая цифра
