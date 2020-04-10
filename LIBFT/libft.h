@@ -16,6 +16,11 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# define BUFF_SIZE 47
+# define MAX_FD 4096
+# define CHECKEND(car) if (car == 0) return (0);
+# define CHECKMEM(x) if (!x) x = ft_strnew(1);
+# define MERROR(item) if(!item) return (-1);
 
 typedef struct		s_list
 {

@@ -114,6 +114,16 @@ void	sort_five(t_dlist **a, t_dlist **b)
 	}
 }
 
+void	dlistdell(t_dlist **begin)
+{
+	while ((*begin)->next)
+		dlistdell(&(*begin)->next);
+	(*begin)->next = NULL;
+	(*begin)->previous = NULL;
+	free((*begin));
+	(*begin) = NULL;
+}
+
 int		main(int ac, char **av)
 {
 	t_dlist *stack_a;
@@ -137,6 +147,9 @@ int		main(int ac, char **av)
 			sort_hundred(&stack_a, &stack_b);
 		if (is_sorted(&stack_a) == 0)
 			check_place_if_not_sorted(&stack_a);
+		//////////
+		if (stack_a)
+			dlistdell(&stack_a);
 	}
 	return (0);
 }

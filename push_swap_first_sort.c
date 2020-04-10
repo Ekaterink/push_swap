@@ -70,73 +70,26 @@ int		find_order(t_dlist *list, int num)
 	return (i);
 }
 
-char    *del_substr(char *str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-    {
-        if (str[i - 1] && str[i - 1] == ' ' && str[i] != ' ')
-            return (&str[i]);
-        i++;
-    }
-    return (NULL);
-}
-
-int     is_substr(char *str, char c)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] == c)
-            return (1);
-        i++;
-    }
-    return (0);
-}
-
-
-char    *exist_str(char *str, int count)
-{
-    if (is_substr(str, ' ') == 0 && count == 0) // просто число
-        return (str);
-    else if (is_substr(str, ' ') == 0 && count == 1) // просто число
-        return (NULL);
-    else // там строка
-    {
-        if (count == 0) // первая цифра
-            return (str);
-        else // удаляем цифру и пробел, если есть
-        {
-            return (del_substr(str));
-        }
-    }
-}
-
 t_dlist	*get_stack_a(char **av)
 {
 	t_dlist	*new;
 	t_dlist	*begin;
 	int		i;
-	char    *new_str;
-	int     j;
+	char	*new_str;
+	int		j;
 
 	i = 1;
-//	begin = ft_dlstnew(ft_atoi(av[1]));
-    begin = NULL;
+	begin = NULL;
 	while (av[i])
 	{
-        j = 0;
-        new_str = av[i];
-	    while ((new_str = exist_str(new_str, j)) != NULL)
-        {
-            new = ft_dlstnew(ft_atoi(new_str));
-            ft_dlstadd_to_end(&begin, &new);
-            j++;
-        }
+		j = 0;
+		new_str = av[i];
+		while ((new_str = exist_str(new_str, j)) != NULL)
+		{
+			new = ft_dlstnew(ft_atoi(new_str));
+			ft_dlstadd_to_end(&begin, &new);
+			j++;
+		}
 		i++;
 	}
 	return (begin);

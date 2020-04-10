@@ -15,16 +15,16 @@
 
 int		find_min_int(t_dlist *begin)
 {
-	t_dlist *min;
+	int min;
 
-	min = begin;
+	min = begin->num;
 	while (begin)
 	{
-		if (begin->num < min->num)
-			min = begin;
+		if (begin->num < min)
+			min = begin->num;
 		begin = begin->next;
 	}
-	return (min->num);
+	return (min);
 }
 
 int		find_max_int(t_dlist *begin)

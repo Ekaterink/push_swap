@@ -10,20 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "dlist.h"
+#include "LIBFT/libft.h"
+#include "LIBFT/dlist.h"
 
-t_dlist	*ft_dlstnew(int num)
+char	*del_substr(char *str)
 {
-	t_dlist		*list;
+	int i;
 
-	if (!(list = (t_dlist *)malloc(sizeof(*list))))
+	i = 0;
+	while (str[i])
+	{
+		if (str[i - 1] && str[i - 1] == ' ' && str[i] != ' ')
+			return (&str[i]);
+		i++;
+	}
+	return (NULL);
+}
+
+char	*exist_str(char *str, int count)
+{
+	if (ft_strchr(str, (int)' ') == 0 && count == 0)
+		return (str);
+	if (ft_strchr(str, (int)' ') == 0 && count == 1)
 		return (NULL);
 	else
 	{
-		list->num = num;
+		if (count == 0)
+			return (str);
+		else
+		{
+			return (del_substr(str));
+		}
 	}
-	list->next = NULL;
-	list->previous = NULL;
-	return (list);
 }

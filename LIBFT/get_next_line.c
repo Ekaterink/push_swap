@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "get_next_line.h"
 
 static int	write_to_line(char **line, char **statarr)
 {
