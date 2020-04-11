@@ -49,7 +49,7 @@ int		main(int ac, char **av)
 	{
 		if (checker_valid_isdigit(av) == 0)
 			return (0);
-		stack_a = get_stack_a(av);
+		stack_a = get_stack_a(av, 0);
 		read_commands(str, &proverka);
 		if (proverka == 1)
 			return (assist_checker_main(&stack_a, &stack_b, str));
