@@ -48,9 +48,9 @@ size_t	check_place_if_not_sorted(t_dlist **stack_a)
 		if (num < prev)
 		{
 			if (count > (ft_dlistlen((*stack_a)) / 2))
-				do_func(stack_a, "ra");
-			else
 				do_func(stack_a, "rra");
+			else
+				do_func(stack_a, "ra");
 		}
 		else
 			prev = a->num;
@@ -128,28 +128,27 @@ int		main(int ac, char **av)
 {
 	t_dlist *stack_a;
 	t_dlist *stack_b;
+	int     flag;
 
 	stack_b = NULL;
+	flag = 0;
 	if (ac == 1)
 		return (0);
 	else
 	{
+	    if (ft_strcmp("-v", av[1]) == 0)
+        {
+	        set_flag(&ac, &flag);
+	        av++;
+        }
 		if (checker_valid_isdigit(av) == 0)
 			return (0);
-		stack_a = get_stack_a(av);
-		if (is_sorted(&stack_a) == 1)
-			return (0);
-		else if (ac == 4)
-			sort_three(&stack_a);
-		else if (ac == 6)
-			sort_five(&stack_a, &stack_b);
-		else
-			sort_hundred(&stack_a, &stack_b);
-		if (is_sorted(&stack_a) == 0)
-			check_place_if_not_sorted(&stack_a);
-		//////////
-		if (stack_a)
-			dlistdell(&stack_a);
+		stack_a = get_stack_a(av, flag);
+		if (flag == 1)
+		    first_display(&stack_a);
+        if (is_sorted(&stack_a) == 1)
+            return (0);
+        parse_stack(&stack_a, &stack_b, ac);
 	}
 	return (0);
 }

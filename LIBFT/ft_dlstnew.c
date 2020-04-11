@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "dlist.h"
 
-t_dlist	*ft_dlstnew(int num)
+t_dlist	*ft_dlstnew(int num, int flag)
 {
 	t_dlist		*list;
 
@@ -22,6 +22,7 @@ t_dlist	*ft_dlstnew(int num)
 	else
 	{
 		list->num = num;
+		list->flag = flag;
 	}
 	list->next = NULL;
 	list->previous = NULL;

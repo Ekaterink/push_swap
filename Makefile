@@ -18,10 +18,10 @@ OBJSCH = $(SRCH:.c=.o)
 
 SRC =  push_swap_new.c push_swap_first_sort.c checker.c count_operations.c sort_hundred.c\
 	   checker_operations_s_p.c checker_validation.c find_functions.c write_functions.c \
-	   arguments_string.c
+	   arguments_string.c flag_v.c
 
 SRCH = checker.c checker_operations_s_p.c checker_validation.c find_functions.c checker_main.c \
-	   push_swap_first_sort.c write_functions.c arguments_string.c
+	   push_swap_first_sort.c write_functions.c arguments_string.c flag_v.c
 
 all:
 		gcc -g $(SRC) LIBFT/*.c -o $(NAME)

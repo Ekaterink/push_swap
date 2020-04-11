@@ -70,7 +70,7 @@ int		find_order(t_dlist *list, int num)
 	return (i);
 }
 
-t_dlist	*get_stack_a(char **av)
+t_dlist	*get_stack_a(char **av, int flag)
 {
 	t_dlist	*new;
 	t_dlist	*begin;
@@ -86,7 +86,7 @@ t_dlist	*get_stack_a(char **av)
 		new_str = av[i];
 		while ((new_str = exist_str(new_str, j)) != NULL)
 		{
-			new = ft_dlstnew(ft_atoi(new_str));
+			new = ft_dlstnew(ft_atoi(new_str), flag);
 			ft_dlstadd_to_end(&begin, &new);
 			j++;
 		}

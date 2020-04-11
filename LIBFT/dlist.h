@@ -20,6 +20,7 @@ typedef struct		s_dlist
 	int				num;
 	struct s_dlist	*next;
 	struct s_dlist	*previous;
+	int				flag;
 }					t_dlist;
 
 void				write_function4(t_dlist **a, t_dlist **b, char *buf);
@@ -61,15 +62,21 @@ void				first_sort3(t_dlist **stack_a, t_dlist **stack_b,
 		int max, int min);
 void				first_sort2(t_dlist **stack_a, t_dlist **stack_b);
 int					find_order(t_dlist *list, int num);
-t_dlist				*get_stack_a(char **av);
+t_dlist				*get_stack_a(char **av, int flag);
 void				rotate_b_to_min(t_dlist **a, t_dlist **b);
 void				rotate_first_half_of_a(t_dlist **a, t_dlist **b);
 void				rotate_last_half_of_a(t_dlist **a, t_dlist **b);
 void				sort_hundred(t_dlist **a, t_dlist **b);
 void				do_func(t_dlist **stack_a, char *buf);
-t_dlist				*ft_dlstnew(int num);
+t_dlist				*ft_dlstnew(int num, int flag);
 void				ft_dlstadd_to_end(t_dlist **alst, t_dlist **new);
 char				*exist_str(char *str, int count);
 char				*del_substr(char *str);
+void 				display_stack(t_dlist **stack_a, t_dlist **stack_b);
+void 				first_display(t_dlist **stack_a);
+void				assist_display_stack(t_dlist *a, t_dlist *b);
+void				dlistdell(t_dlist **begin);
+void 				parse_stack(t_dlist **stack_a, t_dlist **stack_b, int ac);
+void				set_flag(int *ac, int *flag);
 
 #endif
