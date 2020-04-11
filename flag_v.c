@@ -13,7 +13,7 @@
 #include "LIBFT/libft.h"
 #include "LIBFT/dlist.h"
 
-void 	first_display(t_dlist **stack_a)
+void	first_display(t_dlist **stack_a)
 {
 	t_dlist *a;
 
@@ -33,7 +33,7 @@ void 	first_display(t_dlist **stack_a)
 	write(1, "\nstack_B: ---\n", 14);
 }
 
-void 	assist_display_stack(t_dlist *a, t_dlist *b)
+void	assist_display_stack(t_dlist *a, t_dlist *b)
 {
 	write(1, "stack_A: ", 9);
 	if (!a)
@@ -56,7 +56,7 @@ void 	assist_display_stack(t_dlist *a, t_dlist *b)
 	write(1, "\n", 1);
 }
 
-void 	display_stack(t_dlist **stack_a, t_dlist **stack_b)
+void	display_stack(t_dlist **stack_a, t_dlist **stack_b)
 {
 	t_dlist *a;
 	t_dlist *b;
@@ -72,7 +72,7 @@ void 	display_stack(t_dlist **stack_a, t_dlist **stack_b)
 	assist_display_stack(a, b);
 }
 
-void 	parse_stack(t_dlist **stack_a, t_dlist **stack_b, int ac)
+void	parse_stack(t_dlist **stack_a, t_dlist **stack_b, int ac)
 {
 	if (ac == 4)
 		sort_three(stack_a);

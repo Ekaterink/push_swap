@@ -72,11 +72,11 @@ t_dlist				*ft_dlstnew(int num, int flag);
 void				ft_dlstadd_to_end(t_dlist **alst, t_dlist **new);
 char				*exist_str(char *str, int count);
 char				*del_substr(char *str);
-void 				display_stack(t_dlist **stack_a, t_dlist **stack_b);
-void 				first_display(t_dlist **stack_a);
+void				display_stack(t_dlist **stack_a, t_dlist **stack_b);
+void				first_display(t_dlist **stack_a);
 void				assist_display_stack(t_dlist *a, t_dlist *b);
 void				dlistdell(t_dlist **begin);
-void 				parse_stack(t_dlist **stack_a, t_dlist **stack_b, int ac);
+void				parse_stack(t_dlist **stack_a, t_dlist **stack_b, int ac);
 void				set_flag(int *ac, int *flag);
 
 #endif
