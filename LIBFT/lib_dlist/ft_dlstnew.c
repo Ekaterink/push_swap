@@ -10,23 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "dlist.h"
+#include "../../includes/dlist.h"
 
-void	ft_dlstadd_to_end(t_dlist **alst, t_dlist **new)
+t_dlist	*ft_dlstnew(int num, int flag)
 {
-	t_dlist *begin;
+	t_dlist		*list;
 
-	begin = (*alst);
-	if (begin)
-	{
-		while ((*alst)->next)
-			(*alst) = (*alst)->next;
-		(*alst)->next = (*new);
-		(*new)->previous = (*alst);
-		(*new)->next = NULL;
-		(*alst) = begin;
-	}
+	if (!(list = (t_dlist *)malloc(sizeof(*list))))
+		return (NULL);
 	else
-		(*alst) = (*new);
+	{
+		list->num = num;
+		list->flag = flag;
+	}
+	list->next = NULL;
+	list->previous = NULL;
+	return (list);
 }

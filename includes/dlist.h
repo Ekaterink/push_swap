@@ -6,7 +6,7 @@
 /*   By: mburnett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 19:27:36 by mburnett          #+#    #+#             */
-/*   Updated: 2020/03/15 19:28:12 by mburnett         ###   ########.fr       */
+/*   Updated: 2020/04/17 16:28:15 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_DLIST_H
 
 # include <stdio.h>
+# include "../LIBFT/lib_str/libft.h"
 
 typedef struct		s_dlist
 {
