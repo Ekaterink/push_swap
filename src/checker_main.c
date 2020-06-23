@@ -16,7 +16,11 @@ int		assist_checker_main(t_dlist **stack_a, t_dlist **stack_b, char **str)
 {
 	do_operations(stack_a, stack_b, str);
 	checker_ok(stack_a, stack_b);
-	return (0);
+	if (*stack_a)
+	    dlistdell(stack_a);
+	if (*stack_b)
+	    dlistdell(stack_b);
+	exit(0);
 }
 
 void	read_commands(char **str, int *proverka)
@@ -28,11 +32,15 @@ void	read_commands(char **str, int *proverka)
 	{
 		if ((*proverka = checker_valid_command(str[i])) == 0)
 		{
+            free(str[i]);
 			write(1, "Error\n", 6);
 			break ;
 		}
+		free(str[i]);
 		i++;
 	}
+//	if (str[i])
+	    free(str[i]);
 }
 
 int		main(int ac, char **av)
@@ -43,14 +51,20 @@ int		main(int ac, char **av)
 	int		proverka;
 
 	proverka = 1;
+	stack_a = NULL;
+	stack_b = NULL;
 	if (ac > 1)
 	{
 		if (checker_valid_isdigit(av) == 0)
-			return (0);
+            exit(0);
 		stack_a = get_stack_a(av, 0);
-		read_commands(str, &proverka);
+		read_commands(str, &proverka); // leak 1 byte
 		if (proverka == 1)
 			return (assist_checker_main(&stack_a, &stack_b, str));
+        if (stack_a)
+            dlistdell(&stack_a);
+        if (stack_b)
+            dlistdell(&stack_b);
 	}
-	return (0);
+	exit(0);
 }

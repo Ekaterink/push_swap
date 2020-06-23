@@ -26,6 +26,7 @@ size_t	is_sorted(t_dlist **stack_a)
 			return (0);
 		prev = list->num;
 	}
+	dlistdell(stack_a);
 	return (1);
 }
 
