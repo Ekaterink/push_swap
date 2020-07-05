@@ -20,6 +20,7 @@ int		assist_checker_main(t_dlist **stack_a, t_dlist **stack_b, char **str)
 		dlistdell(stack_a);
 	if (*stack_b)
 		dlistdell(stack_b);
+    *str = NULL;
 	exit(0);
 }
 
@@ -57,13 +58,13 @@ int		main(int ac, char **av)
 			exit(0);
 		stack_a = get_stack_a(av, 0);
 		read_commands(str, &proverka);
-		*str = NULL;
 		if (proverka == 1)
 			return (assist_checker_main(&stack_a, &stack_b, str));
 		if (stack_a)
 			dlistdell(&stack_a);
 		if (stack_b)
 			dlistdell(&stack_b);
+        *str = NULL;
 	}
 	exit(0);
 }
