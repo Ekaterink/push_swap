@@ -12,6 +12,18 @@
 
 #include "dlist.h"
 
+void	clear_str(char **str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+}
+
 int		assist_checker_main(t_dlist **stack_a, t_dlist **stack_b, char **str)
 {
 	do_operations(stack_a, stack_b, str);
@@ -20,7 +32,7 @@ int		assist_checker_main(t_dlist **stack_a, t_dlist **stack_b, char **str)
 		dlistdell(stack_a);
 	if (*stack_b)
 		dlistdell(stack_b);
-    *str = NULL;
+	clear_str(str);
 	exit(0);
 }
 
@@ -33,11 +45,9 @@ void	read_commands(char **str, int *proverka)
 	{
 		if ((*proverka = checker_valid_command(str[i])) == 0)
 		{
-			free(str[i]);
 			write(1, "Error\n", 6);
 			break ;
 		}
-		free(str[i]);
 		i++;
 	}
 }
@@ -64,7 +74,7 @@ int		main(int ac, char **av)
 			dlistdell(&stack_a);
 		if (stack_b)
 			dlistdell(&stack_b);
-        *str = NULL;
+		clear_str(str);
 	}
 	exit(0);
 }
